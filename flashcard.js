@@ -19,6 +19,7 @@ class Flashcard {
     this.offsetX = 0;
     this.offsetY = 0;
     this.dragStarted = false;
+    
 
     this._flipCard = this._flipCard.bind(this);
     this._createFlashcardDOM = this._createFlashcardDOM.bind(this);
@@ -72,6 +73,9 @@ class Flashcard {
     }
     if (this.deltaX < -150) {
       document.dispatchEvent(new CustomEvent('left'));
+    }
+    else{
+      this.flashcardElement.style.cssText="transition-duration:0.6s";
     }
 
     const body = document.querySelector('body');
