@@ -15,14 +15,14 @@ class Flashcard {
     this.offsetX = 0;
     this.offsetY = 0;
     this.deltaX = 0;
-    this.deltaY =0;
-    this.offsetX=0;
-    this.offsetY=0;
+    this.deltaY = 0;
+    this.offsetX = 0;
+    this.offsetY = 0;
     this.dragStarted = false;
 
     this._flipCard = this._flipCard.bind(this);
-    this._createFlashcardDOM=this._createFlashcardDOM.bind(this);
-    
+    this._createFlashcardDOM = this._createFlashcardDOM.bind(this);
+
     this.onDragStart = this.onDragStart.bind(this);
     this.onDragMove = this.onDragMove.bind(this);
     this.onDragEnd = this.onDragEnd.bind(this);
@@ -51,36 +51,33 @@ class Flashcard {
     this.deltaY = event.clientY - this.originY;
     const translateX = this.offsetX + this.deltaX;
     const translateY = this.offsetY + this.deltaY;
-    event.currentTarget.style.transform= 'translate(' + 
-    translateX + 'px, ' + translateY + 'px) rotate('+translateX*0.3+'deg)';
+    event.currentTarget.style.transform = 'translate(' +
+      translateX + 'px, ' + translateY + 'px) rotate(' + translateX * 0.3 + 'deg)';
+
+
+
+    const body = document.querySelector('body');
+    if (this.deltaX > 150 || this.deltaX < -150)
+      body.style.backgroundColor = '#97b7b7';
+    else
+      body.style.backgroundColor = '#d0e6df';
   }
   onDragEnd(event) {
     this.dragStarted = false;
     this.offsetX += event.clientX - this.originX;
     this.offsetY += event.clientY - this.originY;
 
-    if(this.deltaX>150)
-    {
+    if (this.deltaX > 150) {
       document.dispatchEvent(new CustomEvent('right'));
     }
+    if (this.deltaX < -150) {
+      document.dispatchEvent(new CustomEvent('left'));
+    }
+
+    const body = document.querySelector('body');
+    body.style.backgroundColor = '#d0e6df';
   }
-  changeText(word,def)
-  {
-    document.removeChild(wordSide);
-  }
-  // Creates the DOM object representing a flashcard with the given
-  // |frontText| and |backText| strings to display on the front and
-  // back of the card. Returns a reference to root of this DOM
-  // snippet. Does not attach this to the page.
-  //
-  // More specifically, this creates the following HTML snippet in JS
-  // as a DOM object:
-  // <div class="flashcard-box show-word">
-  //   <div class="flashcard word">frontText</div>
-  //   <div class="flashcard definition">backText</div>
-  // </div>
-  // and returns a reference to the root of that snippet, i.e. the
-  // <div class="flashcard-box">
+  
   _createFlashcardDOM(frontText, backText) {
     const cardContainer = document.createElement('div');
     cardContainer.classList.add('flashcard-box');

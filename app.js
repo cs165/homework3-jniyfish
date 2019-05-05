@@ -27,7 +27,7 @@ class App {
     //this.flashcards = new FlashcardScreen(mainElement,this.chosen);
     const resultElement = document.querySelector('#results');
     this.results = new ResultsScreen(resultElement);
-    
+
     this.to_Menu = this.to_Menu.bind(this);
     document.addEventListener('menu_open', this.to_Menu);
     //    this.flashcards.show();
@@ -42,17 +42,16 @@ class App {
     this.menu.hide();
 
   }
-  result(event)
-  {
+  result(event) {
     this.menu.hide();
     this.flashcards.hide();
     this.results.show();
   }
-  to_Menu(event)
-  {
-    this.menu.show();
-    this.flashcards.hide();
-    this.results.hide();
+  to_Menu(event) {
+    //   this.menu.show();
+    //   this.flashcards.hide();
+    //   this.results.hide();
+    javascript: history.go(0)
   }
 
 

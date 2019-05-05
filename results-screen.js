@@ -21,6 +21,7 @@ class ResultsScreen {
 
   show(numberCorrect, numberWrong) {
     this.containerElement.classList.remove('inactive');
+    console.log(numberCorrect + "fff" + numberWrong);
   }
 
   hide() {

@@ -12,13 +12,19 @@ class FlashcardScreen {
     this.containerElement = containerElement;
 
     this.right = this.right.bind(this);
+    this.left = this.left.bind(this);
+
+    this.correct =0;
+    this.wrong =0;
+
     this.word = new Array();
     this.def = new Array();
     this.index = 0;
     this.flashcardContainer = document.querySelector('#flashcard-container');
     this.card = null;
     this.cardNum = 1;
-    document.addEventListener('right', this.right)
+    document.addEventListener('right', this.right);
+    document.addEventListener('left', this.left);
 
   }
 
@@ -46,12 +52,52 @@ class FlashcardScreen {
   }
   right() {
     console.log("RIGHT");
+
+    this.correct++;
+    let correctNum = document.querySelectorAll('.correct');
+    correctNum[0].textContent = this.correct;
+    correctNum[1].textContent = this.correct;
+    let perNum = document.querySelector('.percent');
+    let par = this.correct*(100)/((this.correct+this.wrong))
+    par=Math.round(par*10)/10;
+    perNum.textContent = par;
+
     let parent = document.querySelector('#flashcard-container');
     let child = document.querySelector('.flashcard-box');
     if (child != null)
       parent.removeChild(child);
-    //  const flashcardContainer = document.querySelector('#flashcard-container');
-    const card2 = new Flashcard(this.flashcardContainer, this.word[this.cardNum], this.def[this.cardNum]);
+
+    this.card = new Flashcard(this.flashcardContainer, this.word[this.cardNum], this.def[this.cardNum]);
+    this.cardNum++;
+    if (this.cardNum == this.word.length+1) {
+      if (child != null)
+      child = document.querySelector('.flashcard-box');
+      parent.removeChild(child);
+      console.log(this.correct);
+
+      document.dispatchEvent(new CustomEvent('result_open'));
+
+    }
+    
+  }
+  left() {
+    console.log("LEFT");
+
+    this.wrong++;
+    let correctNum = document.querySelectorAll('.incorrect');
+    correctNum[0].textContent = this.wrong;
+    correctNum[1].textContent = this.wrong;
+    let perNum = document.querySelector('.percent');
+    let par = this.correct*(100)/((this.correct+this.wrong))
+    par=Math.round(par*10)/10;
+    perNum.textContent = par;
+
+    let parent = document.querySelector('#flashcard-container');
+    let child = document.querySelector('.flashcard-box');
+    if (child != null)
+      parent.removeChild(child);
+
+    this.card = new Flashcard(this.flashcardContainer, this.word[this.cardNum], this.def[this.cardNum]);
     this.cardNum++;
     if (this.cardNum == this.word.length+1) {
       if (child != null)
