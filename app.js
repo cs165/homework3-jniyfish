@@ -27,6 +27,9 @@ class App {
     //this.flashcards = new FlashcardScreen(mainElement,this.chosen);
     const resultElement = document.querySelector('#results');
     this.results = new ResultsScreen(resultElement);
+    
+    this.to_Menu = this.to_Menu.bind(this);
+    document.addEventListener('menu_open', this.to_Menu);
     //    this.flashcards.show();
     // Uncomment this pair of lines to see the "results" screen:
     //this.menu.hide();
@@ -44,6 +47,12 @@ class App {
     this.menu.hide();
     this.flashcards.hide();
     this.results.show();
+  }
+  to_Menu(event)
+  {
+    this.menu.show();
+    this.flashcards.hide();
+    this.results.hide();
   }
 
 

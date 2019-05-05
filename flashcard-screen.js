@@ -54,7 +54,12 @@ class FlashcardScreen {
     const card2 = new Flashcard(this.flashcardContainer, this.word[this.cardNum], this.def[this.cardNum]);
     this.cardNum++;
     if (this.cardNum == this.word.length+1) {
+      if (child != null)
+      child = document.querySelector('.flashcard-box');
+      parent.removeChild(child);
+
       document.dispatchEvent(new CustomEvent('result_open'));
     }
+    
   }
 }

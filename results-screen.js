@@ -9,6 +9,14 @@
 class ResultsScreen {
   constructor(containerElement) {
     this.containerElement = containerElement;
+
+    //this.to_Menu = this.to_Menu.bind(this);
+    //this.show = this.show.bind(this);
+    //this.hide = this.hide.bind(this);
+
+    this.to_menu = containerElement.querySelector('.to-menu');
+    this.to_menu.addEventListener('click',this.to_Menu);
+    
   }
 
   show(numberCorrect, numberWrong) {
@@ -17,5 +25,9 @@ class ResultsScreen {
 
   hide() {
     this.containerElement.classList.add('inactive');
+  }
+  to_Menu(event)
+  {
+    document.dispatchEvent(new CustomEvent('menu_open'));
   }
 }

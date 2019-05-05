@@ -59,7 +59,7 @@ class Flashcard {
     this.offsetX += event.clientX - this.originX;
     this.offsetY += event.clientY - this.originY;
 
-    if(this.deltaX>100)
+    if(this.deltaX>150)
     {
       document.dispatchEvent(new CustomEvent('right'));
     }
