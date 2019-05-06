@@ -1,4 +1,4 @@
-.flashcard-box .word .definition{
+.flashcard-box .word {
     animation:begin 0.5s;
 }
 @keyframes begin{
