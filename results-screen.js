@@ -16,6 +16,9 @@ class ResultsScreen {
 
     this.to_menu = containerElement.querySelector('.to-menu');
     this.to_menu.addEventListener('click',this.to_Menu);
+
+    this.continue = containerElement.querySelector('.continue');
+    this.continue.addEventListener('click',this._Continue);
     
   }
 
@@ -30,5 +33,9 @@ class ResultsScreen {
   to_Menu(event)
   {
     document.dispatchEvent(new CustomEvent('menu_open'));
+  }
+  _Continue(event)
+  {
+    document.dispatchEvent(new CustomEvent('start_over'));
   }
 }
