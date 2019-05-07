@@ -54,7 +54,7 @@ class Flashcard {
     const translateX = this.offsetX + this.deltaX;
     const translateY = this.offsetY + this.deltaY;
     event.currentTarget.style.transform = 'translate(' +
-      translateX + 'px, ' + translateY + 'px) rotate(' + translateX * 0.3 + 'deg)';
+      translateX + 'px, ' + translateY + 'px) rotate(' + translateX * 0.2 + 'deg)';
 
 
 
