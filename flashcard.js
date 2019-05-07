@@ -42,6 +42,7 @@ class Flashcard {
     this.originY = event.clientY;
     this.dragStarted = true;
     event.currentTarget.setPointerCapture(event.pointerId);
+    this.flashcardElement.style.cssText="transition-duration:0.0s";  //0.6->0s when when dragend < 150 will change to 0.6s
   }
   onDragMove(event) {
     if (!this.dragStarted) {
@@ -75,7 +76,14 @@ class Flashcard {
       document.dispatchEvent(new CustomEvent('left'));
     }
     else{
-      this.flashcardElement.style.cssText="transition-duration:0.6s";
+    this.originX = null;
+    this.originY = null;
+    this.offsetX = 0;
+    this.offsetY = 0;
+    this.deltaX = 0;
+    this.deltaY = 0;
+    this.offsetX = 0;
+    this.flashcardElement.style.cssText="transition-duration:0.6s";
     }
 
     const body = document.querySelector('body');
