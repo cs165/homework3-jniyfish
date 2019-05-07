@@ -42,7 +42,7 @@ class Flashcard {
     this.originY = event.clientY;
     this.dragStarted = true;
     event.currentTarget.setPointerCapture(event.pointerId);
-    this.flashcardElement.style.cssText="transition-duration:0.0s";  //0.6->0s when when dragend < 150 will change to 0.6s
+    this.flashcardElement.style.cssText="transition-duration:0.0s";  //0.6->0s since dragend < 150 will change to 0.6s
   }
   onDragMove(event) {
     if (!this.dragStarted) {

@@ -67,7 +67,7 @@ class FlashcardScreen {
       }
       this.card = new Flashcard(this.flashcardContainer, this.word[0], this.def[0]);
     }
-    this.redo_word = new Array();
+    this.redo_word = new Array(); //clean redoArray for new wrong words and def
     this.redo_def = new Array();
   }
 
@@ -78,7 +78,7 @@ class FlashcardScreen {
     console.log("RIGHT");
 
     let EndTimes = this.word.length + 1;
-    
+
     this.correct++;
     let correctNum = document.querySelectorAll('.correct');
     correctNum[0].textContent = this.correct;
@@ -117,11 +117,11 @@ class FlashcardScreen {
     let EndTimes = this.word.length + 1;
 
     this.redo_def[this.redo_index] = this.def[this.cardNum - 1]
-    this.redo_word[this.redo_index] = this.word[this.cardNum - 1];
+    this.redo_word[this.redo_index] = this.word[this.cardNum - 1]; //save wrong word and def
     this.redo_index++;
 
     this.wrong++;
-    let correctNum = document.querySelectorAll('.incorrect');
+    let correctNum = document.querySelectorAll('.incorrect');  
     correctNum[0].textContent = this.wrong;
     correctNum[1].textContent = this.wrong;
     let perNum = document.querySelector('.percent');
