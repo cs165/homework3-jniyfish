@@ -67,6 +67,8 @@ class FlashcardScreen {
       }
       this.card = new Flashcard(this.flashcardContainer, this.word[0], this.def[0]);
     }
+    this.redo_word = new Array();
+    this.redo_def = new Array();
   }
 
   hide() {
@@ -76,9 +78,7 @@ class FlashcardScreen {
     console.log("RIGHT");
 
     let EndTimes = this.word.length + 1;
-    if (this.deckName == 'redo')
-      EndTimes = this.redo_def.length + 1;
-
+    
     this.correct++;
     let correctNum = document.querySelectorAll('.correct');
     correctNum[0].textContent = this.correct;
@@ -115,8 +115,6 @@ class FlashcardScreen {
   left() {
     console.log("LEFT");
     let EndTimes = this.word.length + 1;
-    if (this.deckName == 'redo')
-      EndTimes = this.redo_def.length + 1;
 
     this.redo_def[this.redo_index] = this.def[this.cardNum - 1]
     this.redo_word[this.redo_index] = this.word[this.cardNum - 1];
