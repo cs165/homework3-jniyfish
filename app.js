@@ -1,7 +1,7 @@
 class App {
   constructor() {
 
-    this.correctRate=0;
+    this.correctRate = 0;
     const menuElement = document.querySelector('#menu');
     this.menu = new MenuScreen(menuElement);
     this._onPresentOpened = this._onPresentOpened.bind(this);
@@ -22,7 +22,7 @@ class App {
     this.to_Menu = this.to_Menu.bind(this);
     document.addEventListener('menu_open', this.to_Menu);
 
-    this.start_Over=this.start_Over.bind(this);
+    this.start_Over = this.start_Over.bind(this);
     document.addEventListener('start_over', this.start_Over);
 
   }
@@ -41,22 +41,25 @@ class App {
     this.results.show();
   }
   to_Menu(event) {
-    //   this.menu.show();
-    //   this.flashcards.hide();
-    //   this.results.hide();
-    javascript: history.go(0)
+    this.menu.show();
+    this.flashcards.hide();
+    this.results.hide();
+    //javascript: history.go(0)
   }
-  start_Over(event)
-  {
+  start_Over(event) {
     console.log('hi');
-    if(this.correctRate==100)
-      javascript: history.go(0)
-    else
+    if (this.correctRate == 100)
     {
+      this.menu.hide();
+      this.flashcards.show(this.chosen);
+      this.results.hide();
+    }
+      //javascript: history.go(0)
+    else {
       this.flashcards.show("redo");
       this.results.hide();
     }
-      
+
   }
 
 

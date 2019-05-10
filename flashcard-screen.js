@@ -38,6 +38,24 @@ class FlashcardScreen {
   show(deckName) {
     this.containerElement.classList.remove('inactive');
     this.deckName = deckName;
+
+    this.correct = 0;
+    this.wrong = 0;
+
+    this.word = new Array();
+    this.def = new Array();
+    this.redo_index = 0;
+    this.index = 0;
+    this.card = null;
+    this.cardNum = 1;
+
+    let correctNum = document.querySelectorAll('.incorrect');
+    correctNum[0].textContent = this.wrong;
+    correctNum[1].textContent = this.wrong;
+    let wNum = document.querySelectorAll('.correct');
+    wNum[0].textContent = this.correct;
+    wNum[1].textContent = this.correct;
+
     if (deckName != 'redo') {         //first time
       for (let i = 0; i < FLASHCARD_DECKS.length; i++) {
         if (FLASHCARD_DECKS[i].title == deckName) {
@@ -57,7 +75,7 @@ class FlashcardScreen {
       this.word = new Array();     //reset wrong num and def and word
       this.def = new Array();
       this.wrong = 0;
-      this.cardNum = 1;       
+      this.cardNum = 1;
       let correctNum = document.querySelectorAll('.incorrect');
       correctNum[0].textContent = this.wrong;
       correctNum[1].textContent = this.wrong;
@@ -121,7 +139,7 @@ class FlashcardScreen {
     this.redo_index++;
 
     this.wrong++;
-    let correctNum = document.querySelectorAll('.incorrect');  
+    let correctNum = document.querySelectorAll('.incorrect');
     correctNum[0].textContent = this.wrong;
     correctNum[1].textContent = this.wrong;
     let perNum = document.querySelector('.percent');
