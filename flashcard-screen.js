@@ -39,24 +39,23 @@ class FlashcardScreen {
     this.containerElement.classList.remove('inactive');
     this.deckName = deckName;
 
-    this.correct = 0;
-    this.wrong = 0;
-
-    this.word = new Array();
-    this.def = new Array();
-    this.redo_index = 0;
-    this.index = 0;
-    this.card = null;
-    this.cardNum = 1;
-
-    let correctNum = document.querySelectorAll('.incorrect');
-    correctNum[0].textContent = this.wrong;
-    correctNum[1].textContent = this.wrong;
-    let wNum = document.querySelectorAll('.correct');
-    wNum[0].textContent = this.correct;
-    wNum[1].textContent = this.correct;
-
     if (deckName != 'redo') {         //first time
+      this.correct = 0;
+      this.wrong = 0;
+
+      this.word = new Array();
+      this.def = new Array();
+      this.redo_index = 0;
+      this.index = 0;
+      this.card = null;
+      this.cardNum = 1;
+
+      let correctNum = document.querySelectorAll('.incorrect');
+      correctNum[0].textContent = this.wrong;
+      correctNum[1].textContent = this.wrong;
+      let wNum = document.querySelectorAll('.correct');
+      wNum[0].textContent = this.correct;
+      wNum[1].textContent = this.correct;
       for (let i = 0; i < FLASHCARD_DECKS.length; i++) {
         if (FLASHCARD_DECKS[i].title == deckName) {
           for (let x in FLASHCARD_DECKS[i].words) {
